@@ -44,3 +44,4 @@ function download(url, dest) {
 Promise.all(downloads.map(d => download(d.url, d.dest)))
   .then(() => console.log('All images downloaded!'))
   .catch(console.error);
+

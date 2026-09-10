@@ -47,25 +47,41 @@ export function RnDPipeline() {
             {'FROM\nCONCEPT\nTO FLIGHT.'}
           </h2>
 
-          <div className="relative h-64 md:h-48 max-w-4xl">
+          <div className="relative min-h-[320px] md:min-h-[240px] max-w-4xl">
             {steps.map((step, index) => {
-              const start = index * 0.2;
-              const end = (index + 1) * 0.2;
+              const segment = 1 / steps.length;
+              const start = index * segment;
+              const end = start + segment;
               
-              // Each step fades in and out, but the last stays visible at the end
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              const opacity = useTransform(
-                scrollYProgress,
-                [Math.max(0, start - 0.05), start, end - 0.05, end],
-                [0, 1, 1, index === steps.length - 1 ? 1 : 0]
-              );
+              const fadeInEnd = start + (segment * 0.25);
+              const fadeOutStart = end - (segment * 0.25);
+
+              let opacityInput: number[];
+              let opacityOutput: number[];
+              let yInput: number[];
+              let yOutput: number[];
+
+              if (index === 0) {
+                opacityInput = [0, fadeOutStart, end];
+                opacityOutput = [1, 1, 0];
+                yInput = [0, fadeOutStart, end];
+                yOutput = [0, 0, -40];
+              } else if (index === steps.length - 1) {
+                opacityInput = [start, fadeInEnd, 1];
+                opacityOutput = [0, 1, 1];
+                yInput = [start, fadeInEnd, 1];
+                yOutput = [40, 0, 0];
+              } else {
+                opacityInput = [start, fadeInEnd, fadeOutStart, end];
+                opacityOutput = [0, 1, 1, 0];
+                yInput = [start, fadeInEnd, fadeOutStart, end];
+                yOutput = [40, 0, 0, -40];
+              }
 
               // eslint-disable-next-line react-hooks/rules-of-hooks
-              const y = useTransform(
-                scrollYProgress,
-                [Math.max(0, start - 0.05), start, end - 0.05, end],
-                [20, 0, 0, index === steps.length - 1 ? 0 : -20]
-              );
+              const opacity = useTransform(scrollYProgress, opacityInput, opacityOutput);
+              // eslint-disable-next-line react-hooks/rules-of-hooks
+              const y = useTransform(scrollYProgress, yInput, yOutput);
 
               return (
                 <motion.div
