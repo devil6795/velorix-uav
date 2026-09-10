@@ -63,10 +63,10 @@ export function Button({
       'px-8 py-4 text-[12px]': size === 'large',
       'px-4 py-2 text-[10px]': size === 'small',
       // Variant
-      'bg-text-primary text-background hover:bg-white border border-transparent': variant === 'primary',
-      'border border-border bg-background text-text-secondary hover:border-text-primary hover:text-text-primary':
+      'bg-text-primary text-background hover:bg-white border border-transparent font-semibold': variant === 'primary',
+      'border border-border-active bg-surface text-text-primary hover:border-text-primary hover:bg-surface-elevated':
         variant === 'secondary',
-      'text-text-secondary hover:text-text-primary': variant === 'ghost',
+      'text-text-primary hover:text-accent': variant === 'ghost',
     },
     className
   );

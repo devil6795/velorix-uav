@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/motion/Reveal';
+import { ChevronDown } from 'lucide-react';
 
 export function ContactCTA() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -51,38 +52,43 @@ export function ContactCTA() {
                     >
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <label htmlFor="name" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-tertiary">Name</label>
-                          <input required type="text" id="name" name="name" className="w-full bg-background border border-border text-text-primary px-4 py-3 rounded-none focus:border-accent focus:outline-none transition-colors" />
+                          <label htmlFor="cta-name" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-secondary">Name</label>
+                          <input required type="text" id="cta-name" name="name" placeholder="YOUR NAME" className="w-full bg-background border border-border text-text-primary placeholder:text-text-tertiary px-4 py-3 rounded-none focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
                         </div>
                         <div className="space-y-2">
-                          <label htmlFor="company" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-tertiary">Company <span className="opacity-50">(Optional)</span></label>
-                          <input type="text" id="company" name="company" className="w-full bg-background border border-border text-text-primary px-4 py-3 rounded-none focus:border-accent focus:outline-none transition-colors" />
+                          <label htmlFor="cta-company" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-secondary">Company <span className="text-text-tertiary">(Optional)</span></label>
+                          <input type="text" id="cta-company" name="company" placeholder="COMPANY NAME" className="w-full bg-background border border-border text-text-primary placeholder:text-text-tertiary px-4 py-3 rounded-none focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="email" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-tertiary">Email</label>
-                        <input required type="email" id="email" name="email" className="w-full bg-background border border-border text-text-primary px-4 py-3 rounded-none focus:border-accent focus:outline-none transition-colors" />
+                        <label htmlFor="cta-email" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-secondary">Email</label>
+                        <input required type="email" id="cta-email" name="email" placeholder="EMAIL ADDRESS" className="w-full bg-background border border-border text-text-primary placeholder:text-text-tertiary px-4 py-3 rounded-none focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="project" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-tertiary">Project Type</label>
-                        <select required id="project" name="project" className="w-full bg-background border border-border text-text-primary px-4 py-3 rounded-none focus:border-accent focus:outline-none transition-colors appearance-none">
-                          <option value="">Select an area...</option>
-                          <option value="UAV Platform">UAV Platform</option>
-                          <option value="Custom UAV">Custom UAV</option>
-                          <option value="Propulsion">Propulsion</option>
-                          <option value="Payload Integration">Payload Integration</option>
-                          <option value="Autonomy">Autonomy</option>
-                          <option value="R&D">R&D</option>
-                          <option value="Partnership">Partnership</option>
-                          <option value="Other">Other</option>
-                        </select>
+                        <label htmlFor="cta-project" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-secondary">Project Type</label>
+                        <div className="relative">
+                          <select required id="cta-project" name="project" defaultValue="" className="w-full bg-background border border-border text-text-primary placeholder:text-text-tertiary px-4 py-3 rounded-none focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all appearance-none cursor-pointer pr-10">
+                            <option value="" disabled className="text-text-tertiary">SELECT AN AREA...</option>
+                            <option value="UAV Platform">UAV Platform</option>
+                            <option value="Custom UAV">Custom UAV</option>
+                            <option value="Propulsion">Propulsion</option>
+                            <option value="Payload Integration">Payload Integration</option>
+                            <option value="Autonomy">Autonomy</option>
+                            <option value="R&D">R&D</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Other">Other</option>
+                          </select>
+                          <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                            <ChevronDown className="w-4 h-4 text-text-secondary" />
+                          </div>
+                        </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="message" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-tertiary">Message</label>
-                        <textarea required id="message" name="message" rows={4} className="w-full bg-background border border-border text-text-primary px-4 py-3 rounded-none focus:border-accent focus:outline-none transition-colors resize-none"></textarea>
+                        <label htmlFor="cta-message" className="block font-mono text-[11px] tracking-[0.12em] uppercase text-text-secondary">Message</label>
+                        <textarea required id="cta-message" name="message" placeholder="HOW CAN WE HELP YOU?" rows={4} className="w-full bg-background border border-border text-text-primary placeholder:text-text-tertiary px-4 py-3 rounded-none focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all resize-y"></textarea>
                       </div>
 
                       <div className="pt-2">
