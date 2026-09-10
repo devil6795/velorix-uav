@@ -6,7 +6,7 @@ import { HeroMeta } from './HeroMeta';
 
 export function Hero() {
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section className="relative w-full h-screen min-h-[700px] md:min-h-[800px] flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-12 lg:px-20 overflow-hidden">
       {/* Media Background Layer (z-0) */}
       <HeroMedia />
 

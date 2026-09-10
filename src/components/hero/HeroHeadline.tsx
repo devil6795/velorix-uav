@@ -7,8 +7,8 @@ export function HeroHeadline() {
   const lines = ['BUILT FOR', 'WHAT COMES', 'NEXT.'];
 
   return (
-    <div className="relative z-10 flex flex-col items-start justify-end pb-8 h-full w-full pointer-events-none">
-      <div className="pointer-events-auto flex flex-col items-start">
+    <div className="relative z-10 flex flex-col items-start h-full w-full pointer-events-none pt-[100px] lg:pt-[120px]">
+      <div className="pointer-events-auto flex flex-col items-start my-auto">
         {/* Top Label */}
         <motion.div 
           className="mb-8 font-mono text-[10px] tracking-[0.1em] text-text-secondary uppercase flex items-center gap-4"
