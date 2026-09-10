@@ -6,17 +6,17 @@
   --font-mono: var(--font-geist-mono);
   
   /* Colors - Dark Aerospace */
-  --color-background: #0A0A0A;
-  --color-surface: #111111;
-  --color-surface-elevated: #1A1A1A;
-  --color-border: #1F1F1F;
+  --color-background: #050505;
+  --color-surface: #0a0a0a;
+  --color-surface-elevated: #111111;
+  --color-border: #1a1a1a;
   --color-border-active: #333333;
-  --color-text-primary: #F5F5F5;
-  --color-text-secondary: #A0A0A0;
-  --color-text-tertiary: #666666;
-  --color-accent: #60A5FA;
-  --color-accent-subtle: rgba(96, 165, 250, 0.12);
-  --color-accent-hover: #93C5FD;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a0a0a0;
+  --color-text-tertiary: #555555;
+  --color-accent: #60a5fa;
+  --color-accent-subtle: rgba(96, 165, 250, 0.1);
+  --color-accent-hover: #93c5fd;
 }
 
 @layer base {
@@ -24,6 +24,27 @@
     @apply bg-background text-text-primary font-sans antialiased;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-[1.05];
+  }
+  
+  h1 {
+    @apply tracking-[-0.04em];
+  }
+
+  h2 {
+    @apply tracking-[-0.03em];
+  }
+  
+  h3, h4 {
+    @apply tracking-[-0.02em];
+  }
+  
+  p {
+    @apply text-text-secondary leading-relaxed tracking-normal;
   }
 
   ::selection {
@@ -32,17 +53,26 @@
 
   /* Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
   }
   ::-webkit-scrollbar-track {
     @apply bg-background;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-full;
+    @apply bg-border rounded-none;
   }
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-border-active;
+  }
+
+  /* Engineered subtle grid background */
+  body {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center top;
   }
 
   /* Noise texture */
@@ -54,9 +84,9 @@
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 1;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 50;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
   
   @media (prefers-reduced-motion: reduce) {
@@ -68,23 +98,5 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-  }
-}
-
-@keyframes velorix-loading {
-  0% {
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  50% {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-  50.01% {
-    transform-origin: right;
-  }
-  100% {
-    transform: scaleX(0);
-    transform-origin: right;
   }
 }
