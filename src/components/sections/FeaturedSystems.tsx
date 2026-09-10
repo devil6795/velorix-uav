@@ -27,7 +27,7 @@ export function FeaturedSystems() {
           {systems.map((system, index) => {
             return (
               <Reveal key={system.id} delay={0.2} duration={0.8}>
-                <Link href={`/systems/${system.slug}`} className="block group">
+                <Link href={`/systems/${system.slug}`} className="block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                   <div className="relative h-[60vh] md:h-[75vh] w-full bg-surface border border-border overflow-hidden">
                     {/* Background Image */}
                     <motion.div 
