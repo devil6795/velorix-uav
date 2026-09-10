@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { SectionIndicator } from '@/components/ui/TechnicalLabel';
+import { useState } from 'react';
 
 const steps = [
   { num: '01', label: 'CONCEPT', desc: 'Requirements analysis, mission profiling, and initial architecture definition.' },
@@ -12,11 +13,57 @@ const steps = [
   { num: '05', label: 'DEPLOY', desc: 'Operational readiness, fleet integration, and continuous monitoring.' }
 ];
 
+function StageContent({ step, isActive }: { step: typeof steps[number]; isActive: boolean }) {
+  return (
+    <motion.div
+      initial={false}
+      animate={{
+        opacity: isActive ? 1 : 0,
+        y: isActive ? 0 : 30,
+        filter: isActive ? 'blur(0px)' : 'blur(4px)',
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="absolute top-0 left-0 w-full pointer-events-none"
+      aria-hidden={!isActive}
+    >
+      <div className="flex gap-8 md:gap-12 items-start">
+        <div className="font-mono text-5xl md:text-8xl font-light text-text-tertiary/30 tracking-tighter select-none" aria-hidden="true">
+          {step.num}
+        </div>
+        <div className="pt-2 md:pt-4">
+          <h3 className="font-mono text-2xl md:text-4xl text-text-primary tracking-widest uppercase mb-4">
+            {step.label}
+          </h3>
+          <div className="h-px w-16 md:w-24 bg-accent mb-6" />
+          <p className="text-text-secondary text-base md:text-xl max-w-lg leading-relaxed">
+            {step.desc}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function RnDPipeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
+  });
+
+  // Derive active index from scroll progress — single source of truth
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const segmentSize = 1 / steps.length;
+    const newIndex = Math.min(
+      steps.length - 1,
+      Math.floor(latest / segmentSize)
+    );
+    setActiveIndex(newIndex);
   });
 
   return (
@@ -26,9 +73,9 @@ export function RnDPipeline() {
         {/* Background Layer with Cross-Fade Image */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <motion.div 
-            className="w-full h-full bg-[url('/media/rnd/engineering.jpg')] bg-cover bg-center bg-no-repeat opacity-30"
+            className="w-full h-full bg-[url('/media/rnd/engineering.jpg')] bg-cover bg-center bg-no-repeat"
             style={{ 
-              opacity: useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 0.15, 0.15, 0]),
+              opacity: useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 0.12, 0.12, 0]),
               scale: useTransform(scrollYProgress, [0, 1], [1.05, 1])
             }}
           />
@@ -47,65 +94,45 @@ export function RnDPipeline() {
             {'FROM\nCONCEPT\nTO FLIGHT.'}
           </h2>
 
-          <div className="relative min-h-[320px] md:min-h-[240px] max-w-4xl">
-            {steps.map((step, index) => {
-              const segment = 1 / steps.length;
-              const start = index * segment;
-              const end = start + segment;
-              
-              const fadeInEnd = start + (segment * 0.25);
-              const fadeOutStart = end - (segment * 0.25);
-
-              let opacityInput: number[];
-              let opacityOutput: number[];
-              let yInput: number[];
-              let yOutput: number[];
-
-              if (index === 0) {
-                opacityInput = [0, fadeOutStart, end];
-                opacityOutput = [1, 1, 0];
-                yInput = [0, fadeOutStart, end];
-                yOutput = [0, 0, -40];
-              } else if (index === steps.length - 1) {
-                opacityInput = [start, fadeInEnd, 1];
-                opacityOutput = [0, 1, 1];
-                yInput = [start, fadeInEnd, 1];
-                yOutput = [40, 0, 0];
-              } else {
-                opacityInput = [start, fadeInEnd, fadeOutStart, end];
-                opacityOutput = [0, 1, 1, 0];
-                yInput = [start, fadeInEnd, fadeOutStart, end];
-                yOutput = [40, 0, 0, -40];
-              }
-
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              const opacity = useTransform(scrollYProgress, opacityInput, opacityOutput);
-              // eslint-disable-next-line react-hooks/rules-of-hooks
-              const y = useTransform(scrollYProgress, yInput, yOutput);
-
-              return (
-                <motion.div
-                  key={step.num}
-                  className="absolute top-0 left-0 w-full"
-                  style={{ opacity, y }}
-                >
-                  <div className="flex gap-8 md:gap-12 items-start">
-                    <div className="font-mono text-5xl md:text-8xl font-light text-text-tertiary tracking-tighter">
-                      {step.num}
-                    </div>
-                    <div className="pt-2 md:pt-4">
-                      <h3 className="font-mono text-2xl md:text-4xl text-text-primary tracking-widest uppercase mb-4">
-                        {step.label}
-                      </h3>
-                      <div className="h-px w-16 md:w-24 bg-accent mb-6" />
-                      <p className="text-text-secondary text-base md:text-xl max-w-lg leading-relaxed">
-                        {step.desc}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+          {/* Stage Content — only one active at a time */}
+          <div className="relative min-h-[280px] md:min-h-[220px] max-w-4xl">
+            {steps.map((step, index) => (
+              <StageContent
+                key={step.num}
+                step={step}
+                isActive={index === activeIndex}
+              />
+            ))}
+          </div>
+          
+          {/* Stage Progress Dots */}
+          <div className="flex items-center gap-3 mt-16">
+            {steps.map((step, index) => (
+              <div
+                key={step.num}
+                className="flex items-center gap-2"
+              >
+                <div
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
+                    index === activeIndex
+                      ? 'bg-accent scale-125'
+                      : index < activeIndex
+                        ? 'bg-text-tertiary'
+                        : 'bg-border'
+                  }`}
+                />
+                <span className={`font-mono text-[9px] tracking-widest uppercase transition-colors duration-500 ${
+                  index === activeIndex ? 'text-accent' : 'text-text-tertiary/40'
+                }`}>
+                  {step.label}
+                </span>
+                {index < steps.length - 1 && (
+                  <div className={`w-4 h-px transition-colors duration-500 ${
+                    index < activeIndex ? 'bg-text-tertiary' : 'bg-border'
+                  }`} />
+                )}
+              </div>
+            ))}
           </div>
           
           {/* Progress Indicator */}

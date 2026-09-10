@@ -7,7 +7,7 @@ export function HeroHeadline() {
   const lines = ['BUILT FOR', 'WHAT COMES', 'NEXT.'];
 
   return (
-    <div className="relative z-10 flex flex-col items-start justify-center pt-20 h-full w-full pointer-events-none">
+    <div className="relative z-10 flex flex-col items-start justify-end pb-8 h-full w-full pointer-events-none">
       <div className="pointer-events-auto flex flex-col items-start">
         {/* Top Label */}
         <motion.div 
@@ -78,14 +78,14 @@ export function HeroHeadline() {
           animate={{ opacity: 0.7, x: 0 }}
           transition={{ duration: 1, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="font-mono text-[9px] text-accent tracking-[0.1em] uppercase">Telemetry // Active</div>
+          <div className="font-mono text-[9px] text-accent tracking-[0.1em] uppercase">Telemetry // Simulated</div>
           <div className="flex items-center gap-2">
             <div className="w-16 h-[1px] bg-border-active" />
             <div className="font-mono text-[9px] text-text-tertiary">SYS.OK</div>
           </div>
-          <div className="font-mono text-[9px] text-text-secondary mt-2">ALT: 12,400 FT</div>
-          <div className="font-mono text-[9px] text-text-secondary">SPD: 0.85M</div>
-          <div className="font-mono text-[9px] text-text-secondary">TRG: ACQUIRED</div>
+          <div className="font-mono text-[9px] text-text-secondary mt-2">MODE: DEVELOPMENT</div>
+          <div className="font-mono text-[9px] text-text-secondary">STATUS: PRE-FLIGHT</div>
+          <div className="font-mono text-[9px] text-text-secondary">BUILD: 2026.09</div>
         </motion.div>
       </div>
       
