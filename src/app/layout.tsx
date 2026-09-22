@@ -23,15 +23,62 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "VELORIX UAV — Built For What Comes Next.",
-  description:
-    "VELORIX UAV develops next-generation unmanned aerial systems, propulsion, flight technologies and mission-focused UAV platforms.",
+  description: "VELORIX UAV develops next-generation unmanned aerial systems, tactical drones, propulsion, flight technologies and mission-focused autonomous aerospace platforms.",
+  keywords: ["UAV", "Unmanned Aerial Vehicles", "Aerospace", "Defense Drones", "Tactical UAV", "Autonomous Flight", "UAV Propulsion", "Drone Manufacturer"],
+  authors: [{ name: "Velorix Engineering" }],
+  creator: "VELORIX UAV",
+  publisher: "VELORIX UAV",
+  metadataBase: new URL("https://velorix-uav.vercel.app"),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: "VELORIX UAV — Built For What Comes Next.",
-    description:
-      "VELORIX UAV develops next-generation unmanned aerial systems, propulsion, flight technologies and mission-focused UAV platforms.",
+    title: "VELORIX UAV — Next-Generation Aerial Systems",
+    description: "Engineering intelligent autonomous systems for strategic superiority. Advanced airframes, tactical avionics, and next-generation payload integration.",
+    url: "https://velorix-uav.vercel.app",
+    siteName: "VELORIX UAV",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "VELORIX UAV Tactical Systems",
+      },
+    ],
+    locale: "en_US",
     type: "website",
   },
-  robots: "index, follow",
+  twitter: {
+    card: "summary_large_image",
+    title: "VELORIX UAV — Aerospace Engineering",
+    description: "Next-generation unmanned aerial systems, tactical drones, and mission-focused autonomous flight technologies.",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "VELORIX UAV",
+  "url": "https://velorix-uav.vercel.app",
+  "description": "VELORIX UAV develops next-generation unmanned aerial systems, tactical drones, propulsion, flight technologies and mission-focused autonomous aerospace platforms.",
+  "founder": {
+    "@type": "Person",
+    "name": "Shantanu",
+    "url": "https://shantanu-portfolio-eight.vercel.app/"
+  },
+  "industry": "Aerospace & Defense"
 };
 
 export default function RootLayout({
@@ -45,6 +92,10 @@ export default function RootLayout({
       className={`dark ${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body className="bg-background text-text-primary font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <GridBackground />
         <ScrollProgress />
         <CustomCursor />
