@@ -81,10 +81,23 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={0.5}>
-              <div className="pt-16">
+              <div className="pt-16 flex flex-col items-start gap-8">
                 <div className="inline-block px-6 py-4 border border-border-active bg-[#0d0d0d] text-sm font-mono tracking-widest text-text-primary shadow-lg shadow-black/50">
                   ENGINEER. TEST. LEARN. REBUILD. FLY.
                 </div>
+                
+                <a 
+                  href="https://shantanu-portfolio.vercel.app" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-orange-500/30 bg-orange-500/10 backdrop-blur-xl text-sm font-mono text-orange-200 hover:scale-105 hover:border-orange-500 hover:text-white hover:bg-orange-500/20 transition-all shadow-[0_0_20px_rgba(255,128,0,0.15)] group"
+                >
+                  <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                  View Founder's Portfolio
+                  <svg className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
               </div>
             </Reveal>
           </div>
