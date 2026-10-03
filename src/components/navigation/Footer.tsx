@@ -15,7 +15,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
             <div>
               <h3 className="text-text-primary text-[12px] tracking-[0.1em] uppercase mb-6 font-medium">
                 Navigation
@@ -54,24 +54,6 @@ export function Footer() {
                     Contact
                   </Link>
                 </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-text-primary text-[12px] tracking-[0.1em] uppercase mb-6 font-medium">
-                Connect
-              </h3>
-              <ul className="flex flex-col gap-4">
-                {['Instagram', 'LinkedIn', 'YouTube', 'GitHub'].map((social) => (
-                  <li key={social}>
-                    <Link 
-                      href="#"
-                      className="text-text-secondary hover:text-text-primary text-[13px] tracking-[0.08em] uppercase transition-colors"
-                    >
-                      {social}
-                    </Link>
-                  </li>
-                ))}
               </ul>
             </div>
           </div>
