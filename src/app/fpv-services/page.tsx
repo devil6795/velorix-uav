@@ -209,15 +209,13 @@ export default function FPVServicesPage() {
           </p>
 
           <form 
-            action="https://formsubmit.co/shantanu@velorixuav.com" 
+            action="https://formsubmit.co/velorix.uav@gmail.com" 
             method="POST" 
             className="flex flex-col gap-6"
           >
             {/* FormSubmit Configuration */}
             <input type="hidden" name="_subject" value="New FPV Build/Repair Enquiry" />
             <input type="hidden" name="_captcha" value="false" />
-            
-            {/* NOTE TO USER: Replace the URL above with your actual email endpoint, or activate it by submitting once */}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
