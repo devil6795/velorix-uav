@@ -7,16 +7,16 @@ export function HeroHeadline() {
   const lines = ['BUILT FOR', 'WHAT COMES', 'NEXT.'];
 
   return (
-    <div className="relative z-10 flex flex-col items-start h-full w-full pointer-events-none pt-[100px] lg:pt-[120px]">
-      <div className="pointer-events-auto flex flex-col items-start my-auto">
+    <div className="w-full pointer-events-none">
+      <div className="pointer-events-auto flex flex-col items-start">
         {/* Top Label */}
         <motion.div 
-          className="mb-8 font-mono text-[10px] tracking-[0.1em] text-text-secondary uppercase flex items-center gap-4"
+          className="mb-6 md:mb-8 font-mono text-[10px] tracking-[0.1em] text-text-secondary uppercase flex items-center gap-4"
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="w-12 h-[1px] bg-text-tertiary block" />
+          <span className="w-8 md:w-12 h-[1px] bg-text-tertiary block" />
           <span className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
             VELORIX UAV // DEFENSE & AEROSPACE
@@ -26,7 +26,7 @@ export function HeroHeadline() {
         {/* Primary Headline */}
         <h1 className="flex flex-col m-0 p-0 text-[clamp(3.5rem,10vw,7.5rem)] font-bold tracking-[-0.04em] leading-[0.95] text-text-primary uppercase">
           {lines.map((line, i) => (
-            <span key={i} className="block overflow-hidden pb-3">
+            <span key={i} className="block overflow-hidden pb-2 md:pb-3">
               <motion.span
                 className="block"
                 initial={{ y: '110%', opacity: 0, rotateZ: 2 }}
@@ -45,7 +45,7 @@ export function HeroHeadline() {
 
         {/* Subheading */}
         <motion.p
-          className="mt-8 text-text-secondary text-sm md:text-base lg:text-lg max-w-lg font-mono tracking-tight leading-relaxed"
+          className="mt-6 md:mt-8 text-text-secondary text-sm md:text-base lg:text-lg max-w-lg font-mono tracking-tight leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -56,7 +56,7 @@ export function HeroHeadline() {
 
         {/* CTA Area */}
         <motion.div
-          className="mt-12 flex flex-col sm:flex-row gap-6"
+          className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4 md:gap-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
@@ -71,7 +71,7 @@ export function HeroHeadline() {
       </div>
 
       {/* Technical Micro-labels / Visual Anchors */}
-      <div className="absolute hidden lg:flex flex-col right-0 top-1/4 pointer-events-none">
+      <div className="absolute hidden lg:flex flex-col right-0 top-[15%] pointer-events-none">
         <motion.div 
           className="flex flex-col items-end gap-1 opacity-70"
           initial={{ opacity: 0, x: 20 }}
@@ -89,7 +89,7 @@ export function HeroHeadline() {
         </motion.div>
       </div>
       
-      <div className="absolute hidden lg:block bottom-1/4 right-1/4 pointer-events-none">
+      <div className="absolute hidden lg:block bottom-0 right-[20%] pointer-events-none">
         <motion.div 
           className="flex items-center gap-3 opacity-50"
           initial={{ opacity: 0 }}

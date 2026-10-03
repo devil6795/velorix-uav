@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/fpv-services`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/rnd`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -48,3 +54,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
+

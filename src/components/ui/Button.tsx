@@ -63,8 +63,8 @@ export function Button({
       'px-8 py-4 text-[12px]': size === 'large',
       'px-4 py-2 text-[10px]': size === 'small',
       // Variant
-      'bg-text-primary text-background hover:bg-white border border-transparent font-semibold': variant === 'primary',
-      'border border-border-active bg-surface text-text-primary hover:border-text-primary hover:bg-surface-elevated':
+      'bg-white text-black font-semibold border border-transparent shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:bg-accent hover:text-white hover:shadow-[0_0_30px_rgba(96,165,250,0.5)]': variant === 'primary',
+      'border border-text-tertiary bg-background/60 backdrop-blur-sm text-white shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:border-white hover:bg-white hover:text-black hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]':
         variant === 'secondary',
       'text-text-primary hover:text-accent': variant === 'ghost',
     },
@@ -103,6 +103,7 @@ export function Button({
     onMouseMove: handleMouseMove,
     onMouseLeave: handleMouseLeave,
     whileTap: { scale: 0.98 },
+    whileHover: { scale: 1.05 },
   };
 
   if (href) {

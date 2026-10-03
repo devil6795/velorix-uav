@@ -1,6 +1,6 @@
 export function HeroMeta() {
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-10 hidden md:flex justify-between items-end px-6 md:px-12 lg:px-20 pb-8 pointer-events-none">
+    <div className="w-full hidden md:flex flex-shrink-0 justify-between items-end pointer-events-none pt-8">
       
       {/* Bottom Left Meta */}
       <div className="flex items-center gap-4 font-mono text-[10px] tracking-[0.15em] text-text-tertiary/40 uppercase">
