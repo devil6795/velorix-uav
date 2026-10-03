@@ -89,7 +89,7 @@ export function FPVEnquiryForm() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {serviceType !== 'Custom Build' && (
+        {serviceType === 'Custom Build' && (
           <div className="flex flex-col gap-2">
             <label className="font-mono text-xs uppercase text-text-tertiary">Budget Range (Optional)</label>
             <input type="text" name="budget" placeholder="USD / INR" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
