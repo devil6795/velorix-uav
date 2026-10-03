@@ -279,20 +279,14 @@ export default function FPVServicesPage() {
                 <input required type="number" min="1" defaultValue="1" name="quantity" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="font-mono text-xs uppercase text-text-tertiary">Desired Completion Date</label>
-                <input type="text" name="timeline" placeholder="e.g. Next month, ASAP" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex flex-col gap-2">
                 <label className="font-mono text-xs uppercase text-text-tertiary">Budget Range (Optional)</label>
                 <input type="text" name="budget" placeholder="USD / INR" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
               </div>
-              <div className="flex flex-col gap-2">
-                <label className="font-mono text-xs uppercase text-text-tertiary">Company Website (For Overseas Biz)</label>
-                <input type="url" name="website" placeholder="https://" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
-              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="font-mono text-xs uppercase text-text-tertiary">Company Website (For Overseas Biz)</label>
+              <input type="url" name="website" placeholder="https://" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
             </div>
 
             <div className="flex items-start gap-3 mt-4">
