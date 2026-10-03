@@ -83,15 +83,9 @@ export function FPVEnquiryForm() {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="flex flex-col gap-2">
-          <label className="font-mono text-xs uppercase text-text-tertiary">Number of Drones *</label>
-          <input required type="number" min="1" defaultValue="1" name="quantity" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label className="font-mono text-xs uppercase text-text-tertiary">Desired Completion Date (Optional)</label>
-          <input type="text" name="timeline" placeholder="e.g. Next month" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
-        </div>
+      <div className="flex flex-col gap-2">
+        <label className="font-mono text-xs uppercase text-text-tertiary">Number of Drones *</label>
+        <input required type="number" min="1" defaultValue="1" name="quantity" className="bg-background border border-border p-3 text-white font-mono focus:outline-none focus:border-accent" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
